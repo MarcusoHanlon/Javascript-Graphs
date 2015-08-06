@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+google.setOnLoadCallback(drawVisualization);
+
+function drawVisualization() {
+  // Some raw data (not necessarily accurate)
+  var data = google.visualization.arrayToDataTable([
+    ['Year', 'NextGen', 'OldGen', 'NextGen Market Share(%)'],
+    ['2013',  73,      104,      0.45],
+    ['2014',  99,      141,       0.42],
+    ['2015',  42,      61,     0.39]
+    
+  ]);
+
+  var options = {
+    title : 'Music Listenership Trends',
+    seriesType: "bars",
+	lineWidth: 5,
+	pointSize: 10,
+    series:[
+                
+                
+                {targetAxisIndex:0},
+                {targetAxisIndex:0},
+                {type:"line",targetAxisIndex:1, color: '#43459d',pointShape: 'circle'}
+				//{5: {type: "line"}}
+    ],
+	isStacked: true,
+    vAxes:[
+        {title: "Absolute Numbers"}, // Left axis
+        {title: "Market Share"} // Right axis
+    ],
+    
+    hAxis: {title: "Year"},
+    //series: {5: {type: "line"}}
+  };
+
+  var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
+}
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>

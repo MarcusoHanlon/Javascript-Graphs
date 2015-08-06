@@ -1,0 +1,38 @@
+﻿<<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="http://visapi-gadgets.googlecode.com/svn/trunk/pilesofmoney/pom.css"/>
+    <script type="text/javascript" src="http://visapi-gadgets.googlecode.com/svn/trunk/pilesofmoney/pom.js"></script>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  </head>
+  <body>
+    <div id="chartdiv"></div>
+    <script type="text/javascript">
+      google.load("visualization", "1");
+      google.setOnLoadCallback(drawChart);
+      var chart;
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'LoB');
+        data.addColumn('number', 'Act INM(m)');
+        data.addRows(6);
+        data.setCell(0, 0, 'RoI Commercial');
+        data.setCell(1, 0, 'NI Commercial');
+        data.setCell(2, 0, '123 Motor');
+        data.setCell(3, 0, '123 Hhold');
+		data.setCell(4, 0, 'Interim Motor');
+		data.setCell(5, 0, 'Interim Hhold');
+        data.setCell(0, 1, 67, '$6.7');
+        data.setCell(1, 1, 41, '$4.1');
+        data.setCell(2, 1, 60, '$6.0');
+        data.setCell(3, 1, 28, '$2.8');
+		data.setCell(4, 1, 57, '$5.7');
+		data.setCell(5, 1, 59, '$5.9');
+        var chartDiv = document.getElementById('chartdiv');
+        var options = {title: 'Net Written Premium YTD(April)'};
+        chart = new PilesOfMoney(chartDiv);
+        chart.draw(data, options);
+        //google.visualization.events.addListener(chart, 'select', handleSelect);
+      }
+    </script>
+  </body>
+</html>
